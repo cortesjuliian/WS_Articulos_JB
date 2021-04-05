@@ -15,9 +15,10 @@ import java.util.List;
  * @author julia
  */
 public class ArticuloDAO extends GenericRepositoryJPA<Articulo> {
-     public List<Articulo> consultarArticulos() {
+
+    public List<Articulo> consultarArticulos() {
         List<Articulo> listArticulo = new ArrayList<>();
-        listArticulo = findAll();
+        listArticulo = findAllOrderByCampo("DESC", "idArticulo");
         return listArticulo;
     }
 

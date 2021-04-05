@@ -7,6 +7,7 @@ package com.udec.wsrestapparticulos.wsrest;
 
 import com.udec.wsrestapparticulos.dao.UsuarioDAO;
 import com.udec.wsrestapparticulos.domain.Usuario;
+import com.udec.wsrestapparticulos.general.utilidad;
 import com.udec.wsrestapparticulos.response.ResponseCrudUsuario;
 import com.udec.wsrestapparticulos.response.ResponseUsuarios;
 import com.udec.wsrestapparticulos.seguridad.Secured;
@@ -58,7 +59,15 @@ public class WSRestUser {
     public ResponseCrudUsuario saveUsuario(Usuario usuario) {
         ResponseCrudUsuario responseCrudUsuario = new ResponseCrudUsuario();
         //usuario.setFechanacimiento(new Date());
-        Usuario newUsuario = new UsuarioDAO().saveUsuario(usuario);
+        
+        utilidad u=new utilidad();
+        String c=u.Limpieza_Cadena(usuario.getNombre());
+        boolean b=u.ValidateScript(usuario.getApellido());
+        
+        
+        
+        if (b) {
+            Usuario newUsuario = new UsuarioDAO().saveUsuario(usuario);
         if (newUsuario != null && newUsuario.getId() != null && newUsuario.getId() > 0) {
             responseCrudUsuario.setIsSuccess(Boolean.TRUE);
             responseCrudUsuario.setUsuario(newUsuario);
@@ -68,6 +77,12 @@ public class WSRestUser {
             responseCrudUsuario.setUsuario(null);
             responseCrudUsuario.setsMsj("PAILA");
         }
+        } else {
+            responseCrudUsuario.setsMsj("No coincide con lo solicitado");
+        }
+        
+        
+        
         return responseCrudUsuario;
     }
     

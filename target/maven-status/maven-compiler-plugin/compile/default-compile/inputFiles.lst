@@ -1,6 +1,7 @@
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\response\ResponseAuthAPI.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\dao\ArticuloDAO.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\general\GenericRepository.java
+C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\wsrest\WSRestMensajes.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\response\ResponseCrudArticulo.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\seguridad\JwtTokenHelper.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\wsrest\WSRestAuth.java
@@ -12,6 +13,7 @@ C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestappa
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\general\GenericRepositoryJPA.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\request\RequestAuthToken.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\dao\UsuarioDAO.java
+C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\response\ResponseCrudMensajes.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\response\ResponseUsuarios.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\wsrest\ApplicationConfig.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\domain\Articulo.java
@@ -19,3 +21,4 @@ C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestappa
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\seguridad\RestSecurityFilter.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\general\connectionDBJPA.java
 C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\seguridad\CrossOriginFilterAPI.java
+C:\Users\julia\Desktop\Java\WSRestAppArticulos\src\main\java\com\udec\wsrestapparticulos\dao\MensajesDAO.java

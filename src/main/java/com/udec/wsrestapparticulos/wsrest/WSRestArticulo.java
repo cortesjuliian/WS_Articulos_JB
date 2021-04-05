@@ -33,7 +33,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 @Consumes(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 public class WSRestArticulo {
-
+    
     @Context
     private UriInfo context;
 
@@ -42,71 +42,78 @@ public class WSRestArticulo {
      */
     public WSRestArticulo() {
     }
-
+    
     @GET
-    @Secured
+//    @Secured
     @Path("obtenerArticulo")
     public ResponseCrudArticulo consultarArticulos() {
         ResponseCrudArticulo responseCrudArticulo = new ResponseCrudArticulo();
         try {
             List<Articulo> ListArticulo = new ArticuloDAO().consultarArticulos();
-            responseCrudArticulo.setIsSuccess(Boolean.TRUE);
-            responseCrudArticulo.setListArticulo(ListArticulo);
+            if (ListArticulo != null && !ListArticulo.isEmpty()) {
+                responseCrudArticulo.setIsSuccess(Boolean.TRUE);
+                responseCrudArticulo.setsMsj("Se han encontrado los registros de articulos.");
+                responseCrudArticulo.setListArticulo(ListArticulo);
+            } else {
+                responseCrudArticulo.setIsSuccess(Boolean.FALSE);
+                responseCrudArticulo.setsMsj("No se han encontrado registros de articulos.");
+                responseCrudArticulo.setListArticulo(null);
+            }
+            
         } catch (Exception e) {
-          e.printStackTrace();
-          responseCrudArticulo.setIsSuccess(false);
-          responseCrudArticulo.setsMsj("Se ha presentado un error al obtener los articulos");
+            e.printStackTrace();
+            responseCrudArticulo.setIsSuccess(false);
+            responseCrudArticulo.setsMsj("Se ha presentado un error al obtener los articulos");
         }
         return responseCrudArticulo;
     }
     
     @POST
-    @Secured
+//    @Secured
     @Path("saveArticulo")
     public ResponseCrudArticulo saveArticulo(Articulo articulo) {
         ResponseCrudArticulo responseCrudArticulo = new ResponseCrudArticulo();
-        //articulo.setFechanacimiento(new Date());
+        articulo.setFecha(new Date());
         try {
             Articulo newArticulo = new ArticuloDAO().saveArticulo(articulo);
-        if (newArticulo != null && newArticulo.getIdArticulo()!= null && newArticulo.getIdArticulo()> 0) {
-            responseCrudArticulo.setIsSuccess(Boolean.TRUE);
-            responseCrudArticulo.setCrudArticulo(newArticulo);
-            responseCrudArticulo.setsMsj("ARTICULO REGISTRADO");
-        } else {
-            responseCrudArticulo.setIsSuccess(Boolean.FALSE);
-            responseCrudArticulo.setCrudArticulo(null);
-            responseCrudArticulo.setsMsj("PAILA");
-        }
+            if (newArticulo != null && newArticulo.getIdArticulo() != null && newArticulo.getIdArticulo() > 0) {
+                responseCrudArticulo.setIsSuccess(Boolean.TRUE);
+                responseCrudArticulo.setCrudArticulo(newArticulo);
+                responseCrudArticulo.setsMsj("ARTICULO REGISTRADO");
+            } else {
+                responseCrudArticulo.setIsSuccess(Boolean.FALSE);
+                responseCrudArticulo.setCrudArticulo(null);
+                responseCrudArticulo.setsMsj("PAILA");
+            }
         } catch (Exception e) {
-             e.printStackTrace();
-          responseCrudArticulo.setIsSuccess(false);
-          responseCrudArticulo.setsMsj("Se ha presentado un error al registrar los articulos");
+            e.printStackTrace();
+            responseCrudArticulo.setIsSuccess(false);
+            responseCrudArticulo.setsMsj("Se ha presentado un error al registrar los articulos");
         }
         return responseCrudArticulo;
     }
-    
     
     @POST
     @Secured
     @Path("updateArticulo")
-    public ResponseCrudArticulo updateArticulo(Articulo articulo){
+    public ResponseCrudArticulo updateArticulo(Articulo articulo) {
         ResponseCrudArticulo responseCrudArticulo = new ResponseCrudArticulo();
         try {
-             Articulo updateArticulo = new ArticuloDAO().updateArticulo(articulo);       
-        if (updateArticulo != null && updateArticulo.getIdArticulo() != null && updateArticulo.getIdArticulo() > 0){
-            responseCrudArticulo.setIsSuccess(Boolean.TRUE);
-            responseCrudArticulo.setArticulo(updateArticulo);
-            responseCrudArticulo.setsMsj("ACTUALIZADO");
-        } else {
-            responseCrudArticulo.setIsSuccess(Boolean.FALSE);
-            responseCrudArticulo.setArticulo(null);
-            responseCrudArticulo.setsMsj("PAILA AL ACTUALIZAR");
-        }            
+            Articulo updateArticulo = new ArticuloDAO().updateArticulo(articulo);            
+            if (updateArticulo != null && updateArticulo.getIdArticulo() != null && updateArticulo.getIdArticulo() > 0) {
+                responseCrudArticulo.setIsSuccess(Boolean.TRUE);
+                responseCrudArticulo.setArticulo(updateArticulo);
+                responseCrudArticulo.setsMsj("ACTUALIZADO");
+            } else {
+                responseCrudArticulo.setIsSuccess(Boolean.FALSE);
+                responseCrudArticulo.setArticulo(null);
+                responseCrudArticulo.setsMsj("PAILA AL ACTUALIZAR");
+            }            
         } catch (Exception e) {
             e.printStackTrace();
-          responseCrudArticulo.setIsSuccess(false);
-          responseCrudArticulo.setsMsj("Se ha presentado un error al actualizar los articulos");
-        }            
+            responseCrudArticulo.setIsSuccess(false);
+            responseCrudArticulo.setsMsj("Se ha presentado un error al actualizar los articulos");
+        }        
         return responseCrudArticulo;
     }
 }

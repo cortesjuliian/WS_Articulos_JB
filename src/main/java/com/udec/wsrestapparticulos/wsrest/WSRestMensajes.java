@@ -40,7 +40,7 @@ public class WSRestMensajes {
     }
 
     @GET
-    @Secured
+//    @Secured
     @Path("obtenerMensajes")
     public ResponseCrudMensajes consultarMensajes() {
         ResponseCrudMensajes responseMensajes = new ResponseCrudMensajes();
@@ -51,7 +51,7 @@ public class WSRestMensajes {
     }
     
     @POST
-    @Secured
+//    @Secured
     @Path("saveMensajes")
     public ResponseCrudMensajes saveMensajes(Mensajes mensaje) {
         ResponseCrudMensajes responseCrudMensajes = new ResponseCrudMensajes();
