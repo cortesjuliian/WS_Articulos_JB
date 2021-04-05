@@ -18,6 +18,7 @@ com\udec\wsrestapparticulos\domain\Usuario.class
 com\udec\wsrestapparticulos\seguridad\JwtTokenHelper.class
 com\udec\wsrestapparticulos\seguridad\CrossOriginFilterAPI.class
 com\udec\wsrestapparticulos\wsrest\WSRestArticulo.class
+com\udec\wsrestapparticulos\general\utilidad.class
 com\udec\wsrestapparticulos\response\ResponseCrudArticulo.class
 com\udec\wsrestapparticulos\response\ResponseUsuarios.class
 com\udec\wsrestapparticulos\response\ResponseCrudUsuario.class
