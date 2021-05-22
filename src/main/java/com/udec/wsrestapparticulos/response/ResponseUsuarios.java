@@ -16,6 +16,7 @@ public class ResponseUsuarios {
 
     private List<Usuario> listUsuarios;
     private Boolean isSuccess;
+    private String sMsj;
 
     public List<Usuario> getListUsuarios() {
         return listUsuarios;
@@ -31,6 +32,14 @@ public class ResponseUsuarios {
 
     public void setIsSuccess(Boolean isSuccess) {
         this.isSuccess = isSuccess;
+    }
+
+    public String getsMsj() {
+        return sMsj;
+    }
+
+    public void setsMsj(String sMsj) {
+        this.sMsj = sMsj;
     }
 
 }

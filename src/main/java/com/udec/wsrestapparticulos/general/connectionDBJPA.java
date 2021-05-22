@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
  *
  * @author julia
  */
-public class connectionDBJPA {
+public class ConnectionDBJPA {
 
     private String sNombrePersistencia = "WSRestAppArticulos_PU";
     private EntityManager em = null;

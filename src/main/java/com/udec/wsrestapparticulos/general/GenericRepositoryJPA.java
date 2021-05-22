@@ -48,7 +48,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
      */
     @Override
     public T create(T t) {
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             this.entityManager.getTransaction().begin();
@@ -74,7 +74,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
 
     @Override
     public T update(T t) {
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             this.entityManager.getTransaction().begin();
@@ -98,7 +98,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
 
     @Override
     public void delete(final T t) {
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             this.entityManager.getTransaction().begin();
@@ -128,7 +128,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
     @Override
     public T find(final Object id) {
         T findClass = null;
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             findClass = (T) this.entityManager.find(type, id);
@@ -149,7 +149,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
     @Override
     public List<T> findAll() {
         List<T> lstFindAll = new ArrayList<>();
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
@@ -177,7 +177,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
     public List<T> findAllOrderByCampo(String sTipoOrder, String sCampoOrder) {
 
         List<T> listFindAllOrderByCampo = new ArrayList<>();
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             CriteriaBuilder cb = this.entityManager.getCriteriaBuilder();
@@ -215,7 +215,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
     @Override
     public List<T> findByNamedQueryForValueString(T t, String sNameQuery, String sCampoFind, String sValueFind) {
         List<T> list = new ArrayList<>();
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             TypedQuery<T> query = this.entityManager.createNamedQuery(sNameQuery, type);
@@ -237,7 +237,7 @@ public class GenericRepositoryJPA<T> implements GenericRepository<T> {
     @Override
     public List<T> findByNamedQueryForValueEntity(T t, String sNameQuery, String sCampoFind, T valueEntity) {
         List<T> list = new ArrayList<>();
-        connectionDBJPA connDBJPA = new connectionDBJPA();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             this.entityManager = connDBJPA.getEntityManager();
             TypedQuery<T> query = this.entityManager.createNamedQuery(sNameQuery, type);
