@@ -35,6 +35,8 @@ public class ApplicationConfig extends Application {
         resources.add(com.udec.wsrestapparticulos.wsrest.WSRestAuth.class);
         resources.add(com.udec.wsrestapparticulos.wsrest.WSRestMensajes.class);
         resources.add(com.udec.wsrestapparticulos.wsrest.WSRestUser.class);
+        resources.add(org.glassfish.jersey.client.filter.HttpDigestAuthFilter.class);
+        resources.add(org.glassfish.jersey.server.wadl.internal.WadlResource.class);
     }
     
 }

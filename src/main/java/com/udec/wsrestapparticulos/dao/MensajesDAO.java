@@ -17,7 +17,7 @@ import java.util.List;
 public class MensajesDAO extends GenericRepositoryJPA<Mensajes> {
     public List<Mensajes> consultarMensajes() {
         List<Mensajes> listMensajes = new ArrayList<>();
-        listMensajes = findAll();
+        listMensajes = findAllOrderByCampo("DESC", "idMensaje");
         return listMensajes;
     }
 

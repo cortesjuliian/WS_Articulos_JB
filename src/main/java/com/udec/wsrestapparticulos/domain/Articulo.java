@@ -40,8 +40,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Articulo.findByFecha", query = "SELECT a FROM Articulo a WHERE a.fecha = :fecha")})
 public class Articulo implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 100)
     @Column(name = "titulo")
     private String titulo;
@@ -49,23 +49,24 @@ public class Articulo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    
     @Column(name = "id_articulo")
     private Integer idArticulo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Size(min = 1, max = 500)
     @Column(name = "articulo")
     private String articulo;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Column(name = "publico")
     private int publico;
-    @Basic(optional = false)
-    @NotNull
+    
+    
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Usuario idUsuario;

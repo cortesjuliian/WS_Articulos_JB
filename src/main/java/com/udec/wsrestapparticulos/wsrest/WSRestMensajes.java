@@ -41,7 +41,7 @@ public class WSRestMensajes {
 
     @GET
     @Secured
-    @Path("obtenerMensajes")
+    @Path("/obtenerMensajes")
     public ResponseCrudMensajes consultarMensajes() {
         ResponseCrudMensajes responseMensajes = new ResponseCrudMensajes();
         List<Mensajes> listMensajes = new MensajesDAO().consultarMensajes();
@@ -52,7 +52,7 @@ public class WSRestMensajes {
     
     @POST
     @Secured
-    @Path("saveMensajes")
+    @Path("/saveMensajes")
     public ResponseCrudMensajes saveMensajes(Mensajes mensaje) {
         ResponseCrudMensajes responseCrudMensajes = new ResponseCrudMensajes();
         //articulo.setFechanacimiento(new Date());
@@ -78,7 +78,7 @@ public class WSRestMensajes {
     
     @POST
     @Secured
-    @Path("updateMensajes")
+    @Path("/updateMensajes")
     public ResponseCrudMensajes updateMensajes(Mensajes articulo){
         ResponseCrudMensajes responseCrudMensajes = new ResponseCrudMensajes();
         try {
