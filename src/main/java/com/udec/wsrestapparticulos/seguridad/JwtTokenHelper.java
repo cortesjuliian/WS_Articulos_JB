@@ -66,7 +66,7 @@ public class JwtTokenHelper {
     }
 
     private Date getExpirationDate() {
-        String sTimeOutSession = "360";
+        String sTimeOutSession = "960";
         Long lTimeOutSession = new Long(sTimeOutSession);
         lTimeOutSession = lTimeOutSession * 1000;
         return new Date(currentTimeInMillis + lTimeOutSession);
