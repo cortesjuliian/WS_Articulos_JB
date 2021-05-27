@@ -6,9 +6,12 @@
 package com.udec.wsrestapparticulos.dao;
 
 import com.udec.wsrestapparticulos.domain.Usuario;
+import com.udec.wsrestapparticulos.general.ConnectionDBJPA;
 import com.udec.wsrestapparticulos.general.GenericRepositoryJPA;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -16,6 +19,8 @@ import java.util.List;
  */
 public class UsuarioDAO extends GenericRepositoryJPA<Usuario> {
 
+    private EntityManager em = null;
+    
     public List<Usuario> consultarUsuarios() {
         List<Usuario> listUsuario = new ArrayList<>();
         listUsuario = findAll();
@@ -54,4 +59,43 @@ public class UsuarioDAO extends GenericRepositoryJPA<Usuario> {
         }
         return findUsuario;
     }
+    
+    public Usuario verificarLogin(Usuario usuario) {
+        Usuario verifiUserCredenciales = new Usuario();
+        ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
+        try {
+            em = connDBJPA.getEntityManager();
+            String sSQL = "SELECT u.*\n"
+                    + "FROM usurios u,\n"
+                    + "WHERE u.usuario= ? and u.pass = ?";
+            Query consultDocument = em.createNativeQuery(sSQL, Usuario.class);
+
+            consultDocument.setParameter(1, usuario.getUsuario());
+            consultDocument.setParameter(2, usuario.getPass());
+
+            List<Usuario> listUsuario = consultDocument.getResultList();
+            if (listUsuario != null && !listUsuario.isEmpty()) {
+                for (Usuario u : listUsuario) {
+                    if (u.getUsuario().equals(usuario.getUsuario()) && u.getPass().equals(usuario.getPass())) {
+                        verifiUserCredenciales = u;
+                        break;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connDBJPA.closeEntityManager();
+            if (em != null) {
+                if (em.isOpen()) {
+                    em.close();
+                }
+            }
+        }
+        return verifiUserCredenciales;
+    }
+
+   
 }
+
+

@@ -10,10 +10,14 @@ import com.udec.wsrestapparticulos.domain.Usuario;
 import com.udec.wsrestapparticulos.general.Encriptar;
 import com.udec.wsrestapparticulos.general.Utilidad;
 import com.udec.wsrestapparticulos.request.RequestCambiarClave;
+import com.udec.wsrestapparticulos.request.RequestLogin;
+import com.udec.wsrestapparticulos.response.ResponseLogin;
 import com.udec.wsrestapparticulos.response.ResponseCrudUsuario;
 import com.udec.wsrestapparticulos.response.ResponseUsuarios;
+import com.udec.wsrestapparticulos.seguridad.JwtTokenHelper;
 import com.udec.wsrestapparticulos.seguridad.Secured;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -75,17 +79,17 @@ public class WSRestUser {
     @POST
     @Secured
     @Path("/saveUsuario")
-    public ResponseCrudUsuario saveUsuario(Usuario requestUsuario) {
+    public ResponseCrudUsuario saveUsuario(Usuario requestLogin) {
         ResponseCrudUsuario responseCrudUsuario = new ResponseCrudUsuario();
         try {
-            if (requestUsuario != null) {
-                String sNommbres = requestUsuario.getNombre();
-                String sApellidos = requestUsuario.getApellido();
-                String sEmail = requestUsuario.getEmail();
-                String sCantidadHijos = requestUsuario.getCantidadhijos();
-                String sEstadoCivil = requestUsuario.getEstadocivil();
-                String sUsuario = requestUsuario.getUsuario();
-                String sClave = requestUsuario.getPass();
+            if (requestLogin != null) {
+                String sNommbres = requestLogin.getNombre();
+                String sApellidos = requestLogin.getApellido();
+                String sEmail = requestLogin.getEmail();
+                String sCantidadHijos = requestLogin.getCantidadhijos();
+                String sEstadoCivil = requestLogin.getEstadocivil();
+                String sUsuario = requestLogin.getUsuario();
+                String sClave = requestLogin.getPass();
                 //SE LIMPIAN LOS DATOS QUE VIENEN DEL REQUEST
                 sNommbres = util.Limpieza_Cadena(sNommbres);
                 sApellidos = util.Limpieza_Cadena(sApellidos);
@@ -163,16 +167,16 @@ public class WSRestUser {
     @POST
     @Secured
     @Path("/updateUsuario")
-    public ResponseCrudUsuario updateUsuario(Usuario requestUsuario) {
+    public ResponseCrudUsuario updateUsuario(Usuario requestLogin) {
         ResponseCrudUsuario responseCrudUsuario = new ResponseCrudUsuario();
         try {
-            if (requestUsuario != null && requestUsuario.getId() != null && requestUsuario.getId() > 0) {
-                Integer idUsuario = requestUsuario.getId();
-                String sNommbres = requestUsuario.getNombre();
-                String sApellidos = requestUsuario.getApellido();
-                String sEmail = requestUsuario.getEmail();
-                String sCantidadHijos = requestUsuario.getCantidadhijos();
-                String sEstadoCivil = requestUsuario.getEstadocivil();
+            if (requestLogin != null && requestLogin.getId() != null && requestLogin.getId() > 0) {
+                Integer idUsuario = requestLogin.getId();
+                String sNommbres = requestLogin.getNombre();
+                String sApellidos = requestLogin.getApellido();
+                String sEmail = requestLogin.getEmail();
+                String sCantidadHijos = requestLogin.getCantidadhijos();
+                String sEstadoCivil = requestLogin.getEstadocivil();
                 //SE LIMPIAN LOS DATOS QUE VIENEN DEL REQUEST
                 sNommbres = util.Limpieza_Cadena(sNommbres);
                 sApellidos = util.Limpieza_Cadena(sApellidos);
@@ -211,20 +215,20 @@ public class WSRestUser {
                             }
 
                         } else {
-                            responseCrudUsuario.setIsSuccess(Boolean.FALSE);                            
+                            responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                             responseCrudUsuario.setsMsj("El dato de cantidad de hijos no es valido");
                         }
                     } else {
-                        responseCrudUsuario.setIsSuccess(Boolean.FALSE);                        
+                        responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                         responseCrudUsuario.setsMsj("El email o estado civil no son validos");
                     }
                 } else {
-                    responseCrudUsuario.setIsSuccess(Boolean.FALSE);                   
+                    responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                     responseCrudUsuario.setsMsj("El código, nombres o apellidos del usuario no son validos");
                 }
 
             } else {
-                responseCrudUsuario.setIsSuccess(Boolean.FALSE);                
+                responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                 responseCrudUsuario.setsMsj("Los parametros son requeridos");
             }
         } catch (Exception e) {
@@ -301,4 +305,48 @@ public class WSRestUser {
 
         return responseCrudUsuario;
     }
+
+    @POST
+    @Secured
+    @Path("/Login")
+    public ResponseLogin Login(Usuario requestLogin) {
+        ResponseLogin login = new ResponseLogin();
+        try {
+            if (requestLogin != null) {
+                String sUsuario = requestLogin.getUsuario();
+                String sClave = requestLogin.getPass();
+                sUsuario = util.Limpieza_Cadena(sUsuario);
+                sClave = util.Limpieza_Cadena(sClave);
+                Boolean isTxtUsuario = util.isText(sUsuario);
+                Boolean isClaveAcept = util.isClaveAceptada(sClave);
+                if (isClaveAcept && isTxtUsuario) {
+                    Usuario verificarLoginUsuario = new UsuarioDAO().verificarLogin(requestLogin);
+                    if (verificarLoginUsuario != null && verificarLoginUsuario.getId() != null && verificarLoginUsuario.getId() > 0) {
+                        login.setIsSuccess(true);
+                        login.setsMsj("CORRECTO");
+                        HashMap<String, Object> valToken = new HashMap<>();
+                        valToken.put("iCodUser", verificarLoginUsuario.getId());
+                        String token = new JwtTokenHelper().generateJwtTokenSucces(valToken);
+                        login.setTokenLogin(token);
+                    } else {
+                        login.setIsSuccess(false);
+                        login.setsMsj("CREDENCIALES ERRONEAS");
+                    }
+                } else {
+                    login.setIsSuccess(false);
+                    login.setsMsj("USUARIO Y CLAVE INVALIDOS");
+                }
+            } else {
+                login.setIsSuccess(false);
+                login.setsMsj("LOS DATOS DE ENTRADA NO SE ENCONTRARON");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            login.setIsSuccess(false);
+            login.setsMsj("SE HA PRESENTADO UN ERROR INESPERADO");
+        }
+        return login;
+
+    }
+
 }
