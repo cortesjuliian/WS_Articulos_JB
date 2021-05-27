@@ -1,0 +1,12 @@
+{
+    "idMensaje": 0,
+    "asunto": 0,
+    "mensaje": 0,
+    "adjunto": 0,
+    "idDnatario": {
+        "id": 1
+    },
+    "idRtente": {
+        "id": 2
+    }
+}
