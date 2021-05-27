@@ -38,10 +38,10 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 @Consumes(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 public class WSRestUser {
-
+    
     private Utilidad util = null;
     private Encriptar encriptar = null;
-
+    
     @Context
     private UriInfo context;
 
@@ -52,7 +52,7 @@ public class WSRestUser {
         util = new Utilidad();
         encriptar = new Encriptar();
     }
-
+    
     @GET
     @Secured
     @Path("/obtenerUsuarios")
@@ -75,7 +75,7 @@ public class WSRestUser {
         }
         return responseUsuarios;
     }
-
+    
     @POST
     @Secured
     @Path("/saveUsuario")
@@ -106,7 +106,7 @@ public class WSRestUser {
                 Boolean isTxtEstadoCivil = util.isText(sEstadoCivil);
                 Boolean isTxtUsuario = util.isText(sUsuario);
                 Boolean isClaveAcept = util.isClaveAceptada(sClave);
-
+                
                 if (isTxtNombres && isTxtApellidos) {
                     if (isTxtEmail && isTxtEstadoCivil) {
                         if (isNumberCantHijos) {
@@ -118,8 +118,15 @@ public class WSRestUser {
                                 newUsuario.setEstadocivil(sEstadoCivil);
                                 newUsuario.setCantidadhijos(sCantidadHijos);
                                 newUsuario.setUsuario(sUsuario);
-                                String sPass_To_MD5 = encriptar.encriptar_MD5(sClave);
+                                String sPass_To_MD5 = encriptar.encriptar_MD5(sClave);                                
                                 newUsuario.setPass(sPass_To_MD5);
+                                newUsuario.setTipodocumento("");
+                                newUsuario.setNumerodocumento(0);
+                                newUsuario.setFechanacimiento(new Date());
+                                newUsuario.setFoto("".getBytes());
+                                newUsuario.setNombrefoto("");
+                                newUsuario.setTelefono("");
+                                newUsuario.setTipofoto("");                                
                                 Usuario usuarioCreado = new UsuarioDAO().saveUsuario(newUsuario);
                                 if (usuarioCreado != null && usuarioCreado.getId() != null && usuarioCreado.getId() > 0) {
                                     responseCrudUsuario.setIsSuccess(Boolean.TRUE);
@@ -150,7 +157,7 @@ public class WSRestUser {
                     responseCrudUsuario.setUsuario(null);
                     responseCrudUsuario.setsMsj("Los nombre so apellidos no son validos");
                 }
-
+                
             } else {
                 responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                 responseCrudUsuario.setUsuario(null);
@@ -163,7 +170,7 @@ public class WSRestUser {
         }
         return responseCrudUsuario;
     }
-
+    
     @POST
     @Secured
     @Path("/updateUsuario")
@@ -213,7 +220,7 @@ public class WSRestUser {
                                 responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                                 responseCrudUsuario.setsMsj("No se ha logrado validar la información del usuario.");
                             }
-
+                            
                         } else {
                             responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                             responseCrudUsuario.setsMsj("El dato de cantidad de hijos no es valido");
@@ -226,7 +233,7 @@ public class WSRestUser {
                     responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                     responseCrudUsuario.setsMsj("El código, nombres o apellidos del usuario no son validos");
                 }
-
+                
             } else {
                 responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                 responseCrudUsuario.setsMsj("Los parametros son requeridos");
@@ -238,7 +245,7 @@ public class WSRestUser {
         }
         return responseCrudUsuario;
     }
-
+    
     @POST
     @Secured
     @Path("/cambiarClaveUsuario")
@@ -260,7 +267,8 @@ public class WSRestUser {
                 if (isTxtCurrentPass && isTxtNewPass && isTxtConfirNewPass) {
                     Usuario findUsuarioById = new UsuarioDAO().finUsuarioById(requestCambiarClave.getCurrentUser().getId());
                     if (findUsuarioById != null && findUsuarioById.getId() != null && findUsuarioById.getId() > 0) {
-                        if (sCurrentPass.equals(findUsuarioById.getPass())) {
+                        String sPassOldMD5 = encriptar.encriptar_MD5(sCurrentPass);
+                        if (sPassOldMD5.equals(findUsuarioById.getPass())) {
                             if (sNewPass.equals(sConfirmNewPass)) {
                                 String sPassToMD5 = encriptar.encriptar_MD5(sNewPass);
                                 findUsuarioById.setPass(sPassToMD5);
@@ -277,7 +285,7 @@ public class WSRestUser {
                                 responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                                 responseCrudUsuario.setsMsj("La nueva clave debe coincidir con la confirmación, por favor verifique la información.");
                             }
-
+                            
                         } else {
                             responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                             responseCrudUsuario.setsMsj("La clave actual no es similar a ingresada, por favor verifique la infomración ingresada.");
@@ -286,23 +294,23 @@ public class WSRestUser {
                         responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                         responseCrudUsuario.setsMsj("No se ha logrado validar la información del usuario, por favor verifique la información del usuario.");
                     }
-
+                    
                 } else {
                     responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                     responseCrudUsuario.setsMsj("La clave actual, nueva clave o confirmación de la nueva clave no son validas, por favor verifique la información.");
                 }
-
+                
             } else {
                 responseCrudUsuario.setIsSuccess(Boolean.FALSE);
                 responseCrudUsuario.setsMsj("Los datos del usuario no son correctos o validos, por favor verifique la infomración.");
             }
-
+            
         } catch (Exception e) {
             e.printStackTrace();
             responseCrudUsuario.setIsSuccess(Boolean.FALSE);
             responseCrudUsuario.setsMsj("Se ha presentado un inconveniente al procesar el cambio de clave para el usuario, por favor intente de nuevo.");
         }
-
+        
         return responseCrudUsuario;
     }
 

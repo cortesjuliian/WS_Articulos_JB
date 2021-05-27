@@ -53,98 +53,77 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByPass", query = "SELECT u FROM Usuario u WHERE u.pass = :pass")})
 public class Usuario implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "id")
+    private Integer id;
+
+    @Size(min = 1, max = 50)
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Size(min = 1, max = 30)
+    @Column(name = "apellido")
+    private String apellido;
+
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(min = 1, max = 50)
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "fechanacimiento")
+    @Temporal(TemporalType.DATE)
+    private Date fechanacimiento;
+
+    @Size(min = 1, max = 12)
+    @Column(name = "tipodocumento")
+    private String tipodocumento;
+
+    @Size(min = 1, max = 10)
+    @Column(name = "telefono")
+    private String telefono;
+
+    @Size(min = 1, max = 10)
+    @Column(name = "cantidadhijos")
+    private String cantidadhijos;
+
+    @Size(min = 1, max = 10)
+    @Column(name = "estadocivil")
+    private String estadocivil;
+
+    @Size(min = 1, max = 100)
+    @Column(name = "nombrefoto")
+    private String nombrefoto;
+
+    @Size(min = 1, max = 5)
+    @Column(name = "tipofoto")
+    private String tipofoto;
+
+    @Size(min = 1, max = 20)
+    @Column(name = "usuario")
+    private String usuario;
+
+    @Size(min = 1, max = 200)
+    @Column(name = "pass")
+    private String pass;
+
     @Lob
     @Column(name = "foto")
     private byte[] foto;
 
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "numerodocumento")
     private int numerodocumento;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario", fetch = FetchType.EAGER)
     private Collection<Articulo> articuloCollection;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDnatario", fetch = FetchType.EAGER)
     private Collection<Mensajes> mensajesCollection;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRtente", fetch = FetchType.EAGER)
     private Collection<Mensajes> mensajesCollection1;
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "nombre")
-    private String nombre;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "apellido")
-    private String apellido;
-    
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "email")
-    private String email;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "fechanacimiento")
-    @Temporal(TemporalType.DATE)
-    private Date fechanacimiento;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 12)
-    @Column(name = "tipodocumento")
-    private String tipodocumento;
-    
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "telefono")
-    private String telefono;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "cantidadhijos")
-    private String cantidadhijos;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "estadocivil")
-    private String estadocivil;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "nombrefoto")
-    private String nombrefoto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 5)
-    @Column(name = "tipofoto")
-    private String tipofoto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 20)
-    @Column(name = "usuario")
-    private String usuario;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "pass")
-    private String pass;
 
     public Usuario() {
     }
@@ -219,7 +198,6 @@ public class Usuario implements Serializable {
         this.tipodocumento = tipodocumento;
     }
 
-
     public String getTelefono() {
         return telefono;
     }
@@ -251,7 +229,6 @@ public class Usuario implements Serializable {
     public void setNombrefoto(String nombrefoto) {
         this.nombrefoto = nombrefoto;
     }
-
 
     public String getTipofoto() {
         return tipofoto;
@@ -302,7 +279,6 @@ public class Usuario implements Serializable {
         return "com.udec.wsrestapparticulos.domain.Usuario[ id=" + id + " ]";
     }
 
-
     @XmlTransient
     public Collection<Articulo> getArticuloCollection() {
         return articuloCollection;
@@ -345,5 +321,5 @@ public class Usuario implements Serializable {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+
 }
