@@ -40,27 +40,26 @@ public class Mensajes implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+
     @Column(name = "id_mensaje")
     private Integer idMensaje;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 30)
     @Column(name = "asunto")
     private String asunto;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 500)
     @Column(name = "mensaje")
     private String mensaje;
-    @Basic(optional = false)
-    @NotNull
+
     @Size(min = 1, max = 200)
     @Column(name = "adjunto")
     private String adjunto;
+    
     @JoinColumn(name = "id_dnatario", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Usuario idDnatario;
+    
     @JoinColumn(name = "id_rtente", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Usuario idRtente;
@@ -151,5 +150,5 @@ public class Mensajes implements Serializable {
     public String toString() {
         return "com.udec.wsrestapparticulos.domain.Mensajes[ idMensaje=" + idMensaje + " ]";
     }
-    
+
 }
