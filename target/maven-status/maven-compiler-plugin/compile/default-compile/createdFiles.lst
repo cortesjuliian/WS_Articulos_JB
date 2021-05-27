@@ -10,10 +10,12 @@ com\udec\wsrestapparticulos\wsrest\WSRestUser.class
 com\udec\wsrestapparticulos\request\RequestAuthToken.class
 com\udec\wsrestapparticulos\seguridad\Secured.class
 com\udec\wsrestapparticulos\domain\Articulo.class
+com\udec\wsrestapparticulos\request\RequestLogin.class
 com\udec\wsrestapparticulos\dao\ArticuloDAO.class
 com\udec\wsrestapparticulos\wsrest\ApplicationConfig.class
 com\udec\wsrestapparticulos\response\ResponseCrudMensajes.class
 com\udec\wsrestapparticulos\general\GenericRepositoryJPA.class
+com\udec\wsrestapparticulos\response\ResponseLogin.class
 com\udec\wsrestapparticulos\wsrest\WSRestAuth.class
 com\udec\wsrestapparticulos\domain\Usuario.class
 com\udec\wsrestapparticulos\seguridad\JwtTokenHelper.class

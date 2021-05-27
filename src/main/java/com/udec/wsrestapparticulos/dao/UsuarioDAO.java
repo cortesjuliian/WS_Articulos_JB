@@ -65,9 +65,7 @@ public class UsuarioDAO extends GenericRepositoryJPA<Usuario> {
         ConnectionDBJPA connDBJPA = new ConnectionDBJPA();
         try {
             em = connDBJPA.getEntityManager();
-            String sSQL = "SELECT u.*\n"
-                    + "FROM usurios u,\n"
-                    + "WHERE u.usuario= ? and u.pass = ?";
+            String sSQL = "SELECT * from usurios WHERE usuario= ? and pass = ?";
             Query consultDocument = em.createNativeQuery(sSQL, Usuario.class);
 
             consultDocument.setParameter(1, usuario.getUsuario());

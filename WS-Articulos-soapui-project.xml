@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="634d0e0b-b0b6-4e27-ad47-4dfadfdfd4ed" activeEnvironment="Default" name="WS_Articulos" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" id="a79339b8-e3c5-4230-b9b2-ee8fb5b8cef2" wadlVersion="http://wadl.dev.java.net/2009/02" name="application" type="rest" basePath="/WSRestAppArticulos/API/" definitionUrl="http://localhost:8080/WSRestAppArticulos/API/application.wadl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/WSRestAppArticulos/API/application.wadl"><con:part><con:url>http://localhost:8080/WSRestAppArticulos/API/application.wadl</con:url><con:content><![CDATA[<application xmlns="http://wadl.dev.java.net/2009/02">
+  <doc jersey:generatedBy="Jersey: 2.5.1 2014-01-02 13:43:00" xmlns:jersey="http://jersey.java.net/"/>
+  <doc jersey:hint="This is simplified WADL with user and core resources only. To get full WADL with extended resources use the query parameter detail. Link: http://localhost:8080/WSRestAppArticulos/API/application.wadl?detail=true" xmlns:jersey="http://jersey.java.net/"/>
+  <grammars>
+    <include href="application.wadl/xsd0.xsd">
+      <doc title="Generated" xml:lang="en"/>
+    </include>
+  </grammars>
+  <resources base="http://localhost:8080/WSRestAppArticulos/API/">
+    <resource path="APIUser">
+      <resource path="/updateUsuario">
+        <method id="updateUsuario" name="POST">
+          <request>
+            <ns2:representation element="usuario" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/obtenerUsuarios">
+        <method id="consultarUsuarios" name="GET">
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/saveUsuario">
+        <method id="saveUsuario" name="POST">
+          <request>
+            <ns2:representation element="usuario" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/Login">
+        <method id="Login" name="POST">
+          <request>
+            <ns2:representation element="usuario" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/cambiarClaveUsuario">
+        <method id="cambiarClaveUsuario" name="POST">
+          <request>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="APIMensajes">
+      <resource path="/updateMensajes">
+        <method id="updateMensajes" name="POST">
+          <request>
+            <ns2:representation element="mensajes" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/obtenerMensajes">
+        <method id="consultarMensajes" name="GET">
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/saveMensajes">
+        <method id="saveMensajes" name="POST">
+          <request>
+            <ns2:representation element="mensajes" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="APIArticulo">
+      <resource path="/updateArticulo">
+        <method id="updateArticulo" name="POST">
+          <request>
+            <ns2:representation element="articulo" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/saveArticulo">
+        <method id="saveArticulo" name="POST">
+          <request>
+            <ns2:representation element="articulo" mediaType="application/json; charset=UTF-8" xmlns:ns2="http://wadl.dev.java.net/2009/02" xmlns="" xmlns:ns="http://wadl.dev.java.net/2009/02"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/obtenerArticulos">
+        <method id="consultarArticulos" name="GET">
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="AuthAPI">
+      <resource path="WSAutAPI">
+        <method id="autenticate_api" name="POST">
+          <request>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </request>
+          <response>
+            <representation mediaType="application/json; charset=UTF-8"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+  </resources>
+</application>]]></con:content><con:type>http://wadl.dev.java.net/2009/02</con:type></con:part><con:part><con:url>http://localhost:8080/WSRestAppArticulos/API/application.wadl/xsd0.xsd</con:url><con:content><![CDATA[<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="articulo" type="articulo"/>
+  <xs:element name="mensajes" type="mensajes"/>
+  <xs:element name="usuario" type="usuario"/>
+  <xs:complexType name="articulo">
+    <xs:sequence>
+      <xs:element name="articulo" type="xs:string" minOccurs="0"/>
+      <xs:element name="fecha" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="idArticulo" type="xs:int" minOccurs="0"/>
+      <xs:element name="idUsuario" type="usuario" minOccurs="0"/>
+      <xs:element name="publico" type="xs:int"/>
+      <xs:element name="titulo" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuario">
+    <xs:sequence>
+      <xs:element name="apellido" type="xs:string" minOccurs="0"/>
+      <xs:element name="cantidadhijos" type="xs:string" minOccurs="0"/>
+      <xs:element name="email" type="xs:string" minOccurs="0"/>
+      <xs:element name="estadocivil" type="xs:string" minOccurs="0"/>
+      <xs:element name="fechanacimiento" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="foto" type="xs:base64Binary" minOccurs="0"/>
+      <xs:element name="id" type="xs:int" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombrefoto" type="xs:string" minOccurs="0"/>
+      <xs:element name="numerodocumento" type="xs:int"/>
+      <xs:element name="pass" type="xs:string" minOccurs="0"/>
+      <xs:element name="telefono" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipodocumento" type="xs:string" minOccurs="0"/>
+      <xs:element name="tipofoto" type="xs:string" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="mensajes">
+    <xs:sequence>
+      <xs:element name="adjunto" type="xs:string" minOccurs="0"/>
+      <xs:element name="asunto" type="xs:string" minOccurs="0"/>
+      <xs:element name="idDnatario" type="usuario" minOccurs="0"/>
+      <xs:element name="idMensaje" type="xs:int" minOccurs="0"/>
+      <xs:element name="idRtente" type="usuario" minOccurs="0"/>
+      <xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080</con:endpoint></con:endpoints><con:resource name="APIUser" path="APIUser" id="04e54ad5-64c3-44b0-8d0e-8c309f18a6a6"><con:settings/><con:parameters/><con:resource name="/updateUsuario" path="/updateUsuario" id="5eaad4d3-1ff0-4888-85e4-2684f502ad3f"><con:settings/><con:parameters/><con:method name="POST - updateUsuario" id="5ba63888-03c3-475d-884b-d48fff9bcd3d" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>usuario</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="15fc1f50-3eb0-4ce9-8593-d35b6fb44512" mediaType="application/json; charset=UTF-8" postQueryString="false"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/obtenerUsuarios" path="/obtenerUsuarios" id="fc03f2a4-9ee5-475e-85ec-c7e221413d89"><con:settings/><con:parameters/><con:method name="GET - consultarUsuarios" id="da9a979d-769b-4e67-bc1f-60463eafc954" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="2556f767-5c55-4b90-8e04-469b02e863c3" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/saveUsuario" path="/saveUsuario" id="ab062e67-8c1c-4489-abf4-f9be67139ce6"><con:settings/><con:parameters/><con:method name="POST - saveUsuario" id="4197eb90-c8d1-438a-ba6d-1c1fe48297fa" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>usuario</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="2435d375-c857-4803-a599-97138a23f643" mediaType="application/json; charset=UTF-8" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="AUTHORIZATION" value="BearereyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJBUElBY3RpdmlkYWQxIiwic3ViIjoiV1NfQ09OU1VNRVNfQVBJIiwiYXVkIjoiQVBQIiwiaWF0IjoxNjIyMDgzMDM4LCJleHAiOjE2MjIwODM5OTgsImp0aSI6ImIxOTIzZjczLWRmYzktNDYxOS04ZmZlLTlmNDAxZmMyMmNiOCJ9.bGi21ypo6FzDFi2yLQaBiCHS8X6vByys0pv5R0I1t2zHZyFoKO6h-eCOxLodVhbjMm8NqS53xdgXRC5uYOWbSA" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+    "nombre": "Select * from usurios where 1 = 1",
+    "apellido": "CORTES G",
+    "email": "juliancortes@gmail.com",
+    "cantidadhijos": "0",
+    "estadocivil": "",
+    "usuario": "&lt;script> alert('Hola') &lt;/script>",
+    "pass": "12345"    
+}
+</con:request><con:originalUri>http://localhost/WSRestAppArticulos/API/APIUser/saveUsuario</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/Login" path="/Login" id="a9a1fd7b-9b4b-4e1d-b07c-893852966788"><con:settings/><con:parameters/><con:method name="POST - Login" id="5e557047-a979-4036-b800-28c765e1ccd5" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>usuario</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="b233e00c-9b8e-4402-a84e-6fdcea4a2009" mediaType="application/json; charset=UTF-8" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;entry key="AUTHORIZATION" value="BearereyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJBUElBY3RpdmlkYWQxIiwic3ViIjoiV1NfQ09OU1VNRVNfQVBJIiwiYXVkIjoiQVBQIiwiaWF0IjoxNjIyMDgyNzY1LCJleHAiOjE2MjIwODM3MjQsImp0aSI6IjVhZGI4YTZlLWZmMjktNDk2Zi05ODczLTQ1OTUxMGY2MTkwMiJ9.Md_oBfm0IYGHUFzJyIE8FtBw6IyAunQ3Xqa7GHHlVEv1Dzj8wQoRQfB9Cr8iV0i5iRD_68JBdPtlRCJNDb4iqA" xmlns="http://eviware.com/soapui/config"/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+    "usuario": "juliancho",
+    "pass": "12345"    
+}</con:request><con:originalUri>http://localhost/WSRestAppArticulos/API/APIUser/Login</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/cambiarClaveUsuario" path="/cambiarClaveUsuario" id="46421165-9604-40d3-bcdc-717a07e12beb"><con:settings/><con:parameters/><con:method name="POST - cambiarClaveUsuario" id="8e16a568-8845-44dc-ab23-f02ff9082ad6" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="e7f9f34b-e005-41eb-bfd0-a9714cf4f301" mediaType="application/json; charset=UTF-8"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="APIMensajes" path="APIMensajes" id="dc62fa6c-177f-4fba-8768-3a7cb04d7f33"><con:settings/><con:parameters/><con:resource name="/updateMensajes" path="/updateMensajes" id="105c5829-4da7-4bc6-aeb4-307dc6f64b58"><con:settings/><con:parameters/><con:method name="POST - updateMensajes" id="bb248742-984e-4d6f-b307-aa0affcf42fc" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>mensajes</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="7d963c09-2f78-4346-8fb4-6b63906b9727" mediaType="application/json; charset=UTF-8"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/obtenerMensajes" path="/obtenerMensajes" id="2e2644fd-a350-4b73-9f80-a68bfbde0364"><con:settings/><con:parameters/><con:method name="GET - consultarMensajes" id="e0cc95cd-5c14-46d9-9de3-cc75226162e4" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="32758772-352e-41e5-adc1-96867d350f97" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/saveMensajes" path="/saveMensajes" id="04a935d7-da0c-4e94-8f5d-a5e568703f6e"><con:settings/><con:parameters/><con:method name="POST - saveMensajes" id="f40a9fad-abdb-4139-a51a-d035ee6e4d3e" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>mensajes</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="11e3c21b-12b9-4aa8-95dc-bbeb3713a6a1" mediaType="application/json; charset=UTF-8"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="APIArticulo" path="APIArticulo" id="c4e1e273-0075-4595-a84e-7d7020ba86d9"><con:settings/><con:parameters/><con:resource name="/updateArticulo" path="/updateArticulo" id="7cbe185b-f697-435d-95a6-34fccd4016b1"><con:settings/><con:parameters/><con:method name="POST - updateArticulo" id="6a8eae75-e77a-427f-943b-f03eb503dcd7" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>articulo</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="e886ff7c-0343-4587-9097-921b3215d6b7" mediaType="application/json; charset=UTF-8"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/saveArticulo" path="/saveArticulo" id="03db0f96-4fc3-400f-bb3c-7b7112e70b75"><con:settings/><con:parameters/><con:method name="POST - saveArticulo" id="68c3c905-4016-4f08-ae46-554764035fe3" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element>articulo</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="138aaa46-c5f9-4bc8-85d4-0796cdf42423" mediaType="application/json; charset=UTF-8"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/obtenerArticulos" path="/obtenerArticulos" id="e18df926-0b25-4f93-a251-097249773537"><con:settings/><con:parameters/><con:method name="GET - consultarArticulos" id="15a03756-b62c-4a7b-a25a-647762840557" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="62c395e1-4e3a-4917-9d93-5950902d5ebd" mediaType="application/json"><con:settings/><con:endpoint>http://localhost:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="AuthAPI" path="AuthAPI" id="822c7b3c-3c87-4050-840f-588c417df3af"><con:settings/><con:parameters/><con:resource name="WSAutAPI" path="WSAutAPI" id="0c526b3d-e6f1-403c-ba3e-fc96f6fc37b9"><con:settings/><con:parameters/><con:method name="POST - autenticate_api" id="787c02d0-4a8a-4709-ae40-e63fcd0c872e" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json; charset=UTF-8</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" id="660ca60e-dd97-4472-ae8d-e5dab55d4d5b" mediaType="application/json; charset=UTF-8" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:8080</con:endpoint><con:request>{
+  "SUsuario":"LineaProf2021",
+  "SPass":"540938c5-89b6-44ce-bbe6-3e8aefb9c3d0"	
+}</con:request><con:originalUri>http://localhost/WSRestAppArticulos/API/AuthAPI/WSAutAPI</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

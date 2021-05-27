@@ -328,6 +328,8 @@ public class WSRestUser {
                 Boolean isTxtUsuario = util.isText(sUsuario);
                 Boolean isClaveAcept = util.isClaveAceptada(sClave);
                 if (isClaveAcept && isTxtUsuario) {
+                    String clavemd5=new Encriptar().encriptar_MD5(sClave);
+                    requestLogin.setPass(clavemd5);
                     Usuario verificarLoginUsuario = new UsuarioDAO().verificarLogin(requestLogin);
                     if (verificarLoginUsuario != null && verificarLoginUsuario.getId() != null && verificarLoginUsuario.getId() > 0) {
                         login.setIsSuccess(true);
